@@ -1,0 +1,102 @@
+/* ==========================================================================
+   SLPE.Blazor.DiffViewer — Styles
+   ==========================================================================
+   All styles use CSS custom properties for theming. Override --diff-* variables
+   in your application's CSS to customise colours.
+   ========================================================================== */
+
+/* ── CSS Custom Properties ── */
+
+:root {
+    --diff-added-bg: #d1fae5;
+    --diff-added-text: #065f46;
+    --diff-removed-bg: #fee2e2;
+    --diff-removed-text: #991b1b;
+    --diff-toggle-bg: #e5e7eb;
+    --diff-toggle-text: #374151;
+    --diff-toggle-active-bg: #00173b;
+    --diff-toggle-active-text: #ffffff;
+}
+
+.dark {
+    --diff-added-bg: #064e3b;
+    --diff-added-text: #6ee7b7;
+    --diff-removed-bg: #7f1d1d;
+    --diff-removed-text: #fca5a5;
+    --diff-toggle-bg: #374151;
+    --diff-toggle-text: #d1d5db;
+    --diff-toggle-active-bg: #2563eb;
+    --diff-toggle-active-text: #ffffff;
+}
+
+
+/* ── Core Styles ── */
+
+.diff-content ins {
+    background-color: var(--diff-added-bg);
+    color: var(--diff-added-text);
+    text-decoration: none;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+.diff-content del {
+    background-color: var(--diff-removed-bg);
+    color: var(--diff-removed-text);
+    text-decoration: line-through;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+
+/* ── Toggle Buttons ── */
+
+.diff-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.diff-toggle-btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    background: var(--diff-toggle-bg);
+    color: var(--diff-toggle-text);
+    border: none;
+    cursor: pointer;
+}
+
+.diff-toggle-btn:hover { opacity: 0.85; }
+
+.diff-toggle-btn.active {
+    background: var(--diff-toggle-active-bg);
+    color: var(--diff-toggle-active-text);
+}
+
+
+/* ── Legend ── */
+
+.diff-legend {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.diff-legend-added {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    background: var(--diff-added-bg);
+    color: var(--diff-added-text);
+    border-radius: 0.25rem;
+}
+
+.diff-legend-removed {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    background: var(--diff-removed-bg);
+    color: var(--diff-removed-text);
+    text-decoration: line-through;
+    border-radius: 0.25rem;
+}

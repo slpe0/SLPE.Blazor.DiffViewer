@@ -1,0 +1,40 @@
+<div class="diff-viewer">
+    @if (ShowToggle)
+    {
+        <div class="diff-toggle">
+            <button type="button" @onclick="() => _showChanges = true"
+                    class="diff-toggle-btn @(_showChanges ? "active" : "")">
+                Show changes
+            </button>
+            <button type="button" @onclick="() => _showChanges = false"
+                    class="diff-toggle-btn @(!_showChanges ? "active" : "")">
+                Clean view
+            </button>
+        </div>
+    }
+
+    @if (_showChanges && ShowLegend)
+    {
+        <div class="diff-legend">
+            <span class="diff-legend-added">Added</span>
+            <span class="diff-legend-removed">Removed</span>
+        </div>
+    }
+
+    <div class="diff-content @ContentClass">
+        @((MarkupString)(_showChanges ? DiffHtml : CleanHtml))
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string DiffHtml { get; set; } = "";
+    [Parameter] public string CleanHtml { get; set; } = "";
+    [Parameter] public bool ShowToggle { get; set; } = true;
+    [Parameter] public bool ShowLegend { get; set; } = true;
+    [Parameter] public bool ShowChangesInitially { get; set; } = true;
+    [Parameter] public string ContentClass { get; set; } = "";
+
+    private bool _showChanges;
+
+    protected override void OnInitialized() => _showChanges = ShowChangesInitially;
+}
